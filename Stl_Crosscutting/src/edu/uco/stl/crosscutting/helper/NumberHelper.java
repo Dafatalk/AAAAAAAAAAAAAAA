@@ -16,6 +16,10 @@ public class NumberHelper {
 		return getDefaultNumber(value, ZERO); 
 	}
 	
+	public static final <T extends Number> boolean isZero(T number) {
+		return number.equals(ZERO);
+	}
+	
 	public static final <T extends Number> boolean isGreaterThan(T numberOne, T numberTwo) {
 		return getDefaultNumber(numberOne).doubleValue() > getDefaultNumber(numberTwo).doubleValue();
 	}

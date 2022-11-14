@@ -14,6 +14,7 @@ import edu.uco.stl.crosscutting.messages.Messages;
 import edu.uco.stl.data.dao.AreaDAO;
 import edu.uco.stl.data.dao.relational.DAORelational;
 import edu.uco.stl.domain.AreaDTO;
+import static edu.uco.stl.crosscutting.helper.StringHelper.isDefaultString;
 
 public class AreaMySQLDAO extends DAORelational implements AreaDAO {
 
@@ -70,7 +71,7 @@ public class AreaMySQLDAO extends DAORelational implements AreaDAO {
 				setWhere = false;
 				parameters.add(area.getIDAsString());
 			}
-			if (!ObjectHelper.isNull(area.getName())) {
+			if (!isDefaultString(area.getName())) {
 				sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("name = ? ");
 				setWhere = false;
 				parameters.add(area.getName());

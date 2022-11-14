@@ -14,7 +14,8 @@ import edu.uco.stl.crosscutting.messages.Messages;
 import edu.uco.stl.data.dao.InventoryDAO;
 import edu.uco.stl.data.dao.relational.DAORelational;
 import edu.uco.stl.domain.InventoryDTO;
-
+import static edu.uco.stl.crosscutting.helper.StringHelper.isDefaultString;
+import static edu.uco.stl.crosscutting.helper.NumberHelper.isZero;
 public class InventoryMySQLDAO extends DAORelational implements InventoryDAO{
 	
 	public InventoryMySQLDAO(Connection connection) {
@@ -74,12 +75,12 @@ public class InventoryMySQLDAO extends DAORelational implements InventoryDAO{
 				setWhere = false;
 				parameters.add(inventory.getIDAsString());
 			}
-			if (!ObjectHelper.isNull(inventory.getName())) {
+			if (!isDefaultString(inventory.getName())) {
 				sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("name = ? ");
 				setWhere = false;
 				parameters.add(inventory.getName());
 			}
-			if (!ObjectHelper.isNull(inventory.getProductQuantity())) {
+			if (!isZero(inventory.getProductQuantity())) {
 				sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("productQuantity = ? ");
 				setWhere = false;
 				parameters.add(inventory.getProductQuantity());

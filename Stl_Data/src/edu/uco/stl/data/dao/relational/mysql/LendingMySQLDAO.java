@@ -13,7 +13,8 @@ import edu.uco.stl.crosscutting.messages.Messages;
 import edu.uco.stl.data.dao.LendingDAO;
 import edu.uco.stl.data.dao.relational.DAORelational;
 import edu.uco.stl.domain.LendingDTO;
-
+import static edu.uco.stl.crosscutting.helper.StringHelper.isDefaultString;
+import static edu.uco.stl.crosscutting.helper.NumberHelper.isZero;
 public class LendingMySQLDAO extends DAORelational implements LendingDAO {
 
 	public LendingMySQLDAO(Connection connection) {

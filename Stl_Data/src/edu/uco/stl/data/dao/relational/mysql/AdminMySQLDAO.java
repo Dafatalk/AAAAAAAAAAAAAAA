@@ -14,6 +14,8 @@ import edu.uco.stl.crosscutting.messages.Messages;
 import edu.uco.stl.data.dao.AdminDAO;
 import edu.uco.stl.data.dao.relational.DAORelational;
 import edu.uco.stl.domain.AdminDTO;
+import static edu.uco.stl.crosscutting.helper.StringHelper.isDefaultString;
+
 
 public class AdminMySQLDAO extends DAORelational implements AdminDAO {
 
@@ -78,27 +80,27 @@ public class AdminMySQLDAO extends DAORelational implements AdminDAO {
 				setWhere = false;
 				parameters.add(admin.getIDAsString());
 			}
-			if (!ObjectHelper.isNull(admin.getIdentification())) {
+			if (!isDefaultString(admin.getIdentification())) {
 				sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("identification = ? ");
 				setWhere = false;
 				parameters.add(admin.getIdentification());
 			}
-			if (!ObjectHelper.isNull(admin.getFirstname())) {
+			if (!isDefaultString(admin.getFirstname())) {
 				sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("firstName = ? ");
 				setWhere = false;
 				parameters.add(admin.getFirstname());
 			}
-			if (!ObjectHelper.isNull(admin.getSecondName())) {
+			if (!isDefaultString(admin.getSecondName())) {
 				sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("secondName = ? ");
 				setWhere = false;
 				parameters.add(admin.getSecondName());
 			}
-			if (!ObjectHelper.isNull(admin.getFirstSurname())) {
+			if (!isDefaultString(admin.getFirstSurname())) {
 				sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("firstSurname = ? ");
 				setWhere = false;
 				parameters.add(admin.getFirstSurname());
 			}
-			if (!ObjectHelper.isNull(admin.getSecondSurname())) {
+			if (!isDefaultString(admin.getSecondSurname())) {
 				sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("secondSurname = ? ");
 				setWhere = false;
 				parameters.add(admin.getSecondSurname());

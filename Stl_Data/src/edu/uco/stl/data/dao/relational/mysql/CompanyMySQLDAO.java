@@ -14,6 +14,8 @@ import edu.uco.stl.crosscutting.messages.Messages;
 import edu.uco.stl.data.dao.CompanyDAO;
 import edu.uco.stl.data.dao.relational.DAORelational;
 import edu.uco.stl.domain.CompanyDTO;
+import static edu.uco.stl.crosscutting.helper.StringHelper.isDefaultString;
+import static edu.uco.stl.crosscutting.helper.StringHelper.isDefaultString;
 
 public class CompanyMySQLDAO extends DAORelational implements CompanyDAO {
 
@@ -70,7 +72,7 @@ public class CompanyMySQLDAO extends DAORelational implements CompanyDAO {
 				setWhere = false;
 				parameters.add(company.getIDAsString());
 			}
-			if (!ObjectHelper.isNull(company.getName())) {
+			if (!isDefaultString(company.getName())) {
 				sqlBuilder.append(setWhere ? "WHERE " : "AND ").append("name = ? ");
 				setWhere = false;
 				parameters.add(company.getName());
